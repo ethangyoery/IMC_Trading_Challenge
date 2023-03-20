@@ -1,4 +1,4 @@
-# IMC_Trading
+# IMC_Trading_Challenge
 Making Easy Shells
 
 Trading Method
