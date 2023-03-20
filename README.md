@@ -1,7 +1,6 @@
 # IMC_Trading_Challenge
-Making Easy Shells
 
-Trading Method
+Trading Algorithm
 
 Talked to Keegan (my brother), his suggestions:
 
