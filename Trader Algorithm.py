@@ -24,6 +24,11 @@ class Trader:
             best_bid_pearls = 0
             best_ask_volume_pearls = 0
 
+            best_ask_bananas = 0
+            best_ask_volume_bananas = 0
+            best_bid_bananas = 0
+            best_ask_volume_bananas = 0
+
             # Check if the current product is the 'PEARLS' product, only then run the order logic
             if product == 'PEARLS':
 
@@ -87,7 +92,7 @@ class Trader:
 
                 if len(order_depth.buy_orders) > 0:
                     best_bid_bananas = max(order_depth.buy_orders.keys())
-                    best_bid_volume_bananas = order_depth.sell_orders[best_bid_bananas]
+                    best_bid_volume_bananas = order_depth.sell_orders[best_ask_bananas]
 
                 # Create our buy and sell orders based on our valuation
                 # Check if the lowest ask (sell order) is lower than the above defined fair value
@@ -99,7 +104,7 @@ class Trader:
                     orders.append(Order(product, best_ask_bananas, best_ask_volume_bananas))
 
                     print("SELL", str(-best_bid_volume_bananas / 2) + "x", best_bid_pearls)
-                    orders.append(Order(product, best_bid_pearls, -best_bid_volume_pearls / 2))
+                    orders.append(Order(product, best_bid_pearls, -best_ask_volume_bananas / 2))
 
                 # If highest buy is greater than our valuation of acceptable price, we should sell
                 if best_bid_bananas > acceptable_price_bananas:
@@ -107,11 +112,10 @@ class Trader:
                     orders.append(Order(product, best_bid_bananas, -best_bid_volume_bananas))
 
                     print("BUY", str(best_ask_volume_bananas / 2) + "x", best_ask_pearls)
-                    orders.append(Order(product, best_ask_pearls, best_ask_volume_pearls / 2))
+                    orders.append(Order(product, best_ask_pearls, best_bid_volume_bananas / 2))
 
                 # Add all the above the orders to the result dict
                 result[product] = orders
-    
 
         # Return the dict of orders
         # These possibly contain buy or sell orders for PEARLS and BANANAS
