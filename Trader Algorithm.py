@@ -104,7 +104,7 @@ class Trader:
 
                 if len(order_depth.buy_orders) > 0:
                     best_bid_bananas = max(order_depth.buy_orders.keys())
-                    best_bid_volume_bananas = order_depth.sell_orders[best_bid_bananas]
+                    best_bid_volume_bananas = order_depth.buy_orders[best_bid_bananas]
 
                 # Create our buy and sell orders based on our valuation
                 # Check if the lowest ask (sell order) is lower than the above defined fair value
@@ -192,7 +192,7 @@ class Trader:
 
                 if len(order_depth.buy_orders) > 0:
                     best_bid_pina_coladas = max(order_depth.buy_orders.keys())
-                    best_bid_volume_pina_coladas = order_depth.sell_orders[best_bid_pina_coladas]
+                    best_bid_volume_pina_coladas = order_depth.buy_orders[best_bid_pina_coladas]
 
                 # Create our buy and sell orders based on our valuation
                 # Check if the lowest ask (sell order) is lower than the above defined fair value
